@@ -21,7 +21,7 @@ const protectedRoute = (req: Request, res: Response, next: NextFunction) => {
 const transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: process.env.MAIL,
+        user: process.env.EMAIL,
         pass: process.env.PASSWORD,
     },
 });
@@ -40,7 +40,7 @@ app.post("/contactmail", protectedRoute, (req, res) => {
         return res.status(400).json({ error: "Please provide a message! " });
 
     const emailToSend = {
-        from: process.env.MAIL,
+        from: process.env.EMAIL,
         to: email,
         subject: `${email} contacted you! | Mailserver Loeka`,
         html: `<p>Message from ${email}</p><p>${message}</p>`,
