@@ -4,11 +4,13 @@ import { body, validationResult } from "express-validator";
 import { protectedRoute } from "../middlewares/protectedRoute";
 import { escapeString } from "../utils/escapeString";
 import { MailOptions } from "nodemailer/lib/json-transport";
+import { limiter } from "../middlewares/limiter";
 
 const router = express.Router();
 
 router.post(
   "/",
+  limiter,
   protectedRoute,
   [
     body("fromEmail").isEmail(),
