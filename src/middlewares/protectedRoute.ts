@@ -7,6 +7,6 @@ export const protectedRoute = (
   next: NextFunction
 ) => {
   const { apiKey } = req.body;
-  if (apiKey !== API_KEY?.toString()) res.sendStatus(401);
+  if (apiKey !== API_KEY?.toString()) return res.sendStatus(401);
   else next();
 };

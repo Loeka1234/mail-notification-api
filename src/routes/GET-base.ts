@@ -1,9 +1,10 @@
 import express from "express";
+import { BASE } from "../constants";
 
 const router = express.Router();
 
-router.get("/", (_, res) => {
-  res.json({
+router.get(BASE ?? "/", (req, res) => {
+  return res.json({
     message: "mail-notification-api working",
   });
 });

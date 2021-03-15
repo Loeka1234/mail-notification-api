@@ -3,12 +3,12 @@ FROM node:alpine
 WORKDIR /mail-notification-api
 
 COPY package.json .
-COPY package-lock.json .
+COPY yarn.lock .
 
-RUN npm install
+RUN yarn
 
 COPY . .
 
-RUN npm run build
+RUN yarn build
 
-CMD [ "npm", "run", "start" ]
+CMD [ "yarn", "start" ]
